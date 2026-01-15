@@ -1,12 +1,19 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 
+// Load environment variables from .env file (if it exists)
+try {
+  require('dotenv').config();
+} catch (e) {
+  // dotenv not installed, will use hardcoded values
+}
+
 // ============================================
 // CONFIGURATION - REPLACE THESE VALUES
 // ============================================
 const CONFIG = {
   // Your Discord bot token (same as in workers.js)
   // For Railway: Set as environment variable DISCORD_BOT_TOKEN
-  DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN || 'MTQ2MTA2NjYzODM2NjQ3NDI5MA.Gkhi_V.bHZtH_c92cUx5l08IicsxPM0DAdkkacQw6WUWw',
+  DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN || 'MTQ2MTM0ODE5MDg3OTIyMzg0OA.GBwYjr.iBF92XxagkH-TNRt65AJp0r0k0eik2WqlvbFP4',
   
   // Your Cloudflare Worker URL (after deploying workers.js)
   // For Railway: Set as environment variable WORKER_URL
@@ -16,6 +23,8 @@ const CONFIG = {
 
 console.log('🚀 Starting Discord Gateway Forwarder...');
 console.log(`📡 Forwarding to: ${CONFIG.WORKER_URL}`);
+console.log(`🔑 Token (first 20 chars): ${CONFIG.DISCORD_BOT_TOKEN.substring(0, 20)}...`);
+console.log(`🔑 Token length: ${CONFIG.DISCORD_BOT_TOKEN.length} characters`);
 
 const client = new Client({
   intents: [
