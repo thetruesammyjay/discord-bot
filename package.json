@@ -1,0 +1,19 @@
+{
+  "name": "discord-member-tracker",
+  "version": "1.0.0",
+  "description": "Discord bot forwarder that sends member join events to Cloudflare Worker",
+  "main": "forwarder.js",
+  "scripts": {
+    "start": "node forwarder.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "member-tracker"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  }
+}
